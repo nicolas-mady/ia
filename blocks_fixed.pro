@@ -179,16 +179,16 @@ is_satisfied(State, Goal) :- member(Goal, State).
 % -------------------------
 
 % Situation 1
-s1_start([pos(d,table(3)), pos(c,on(d)), pos(a,on(c)), pos(b,on(a)), clear(b)]).
-s1_goal([pos(c,table(0)), pos(d,table(2)), pos(a,on(c)), pos(b,table(5))]).
+s1_start([pos(c,table(0)), pos(a,table(3)), pos(b,table(5)), pos(d,on(a)), pos(d,on(b)), clear(c), clear(d)]).
+s1_goal([pos(c,table(0)), pos(d,table(2)), pos(a,on(c)), pos(b,table(5)), clear(b), clear(d)]).
 
 % Situation 2
-s2_start([pos(c,table(0)), pos(a,on(c)), pos(b,on(a)), pos(d,table(3)), clear(b), clear(d)]).
-s2_goal([pos(c,table(0)), pos(d,table(3)), pos(b,table(2)), pos(a,on(b))]).
+s2_start([pos(c,table(0)), pos(a,on(c)), pos(b,on(c)), pos(d,table(3)), clear(a), clear(b), clear(d)]).
+s2_goal([pos(d,table(3)), pos(c,on(d)), pos(a,on(c)), pos(b,on(c)), clear(a), clear(b)]).
 
 % Situation 3
-s3_start([pos(c,table(0)), pos(a,table(3)), pos(b,table(5)), pos(d,on(a)), clear(c), clear(b), clear(d)]).
-s3_goal([pos(c,table(0)), pos(a,on(c)), pos(d,table(2)), pos(b,table(5))]).
+s3_start([pos(c,table(0)), pos(a,table(3)), pos(b,table(5)), pos(d,on(a)), pos(d,on(b)), clear(c), clear(d)]).
+s3_goal([pos(c,table(0)), pos(a,on(c)), pos(b,on(c)), pos(d,table(3)), clear(a), clear(b), clear(d)]).
 
 % Backward compatibility aliases (if you call s1_initial/1 etc.)
 s1_initial(S) :- s1_start(S).
