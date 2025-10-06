@@ -1,0 +1,9 @@
+% Exemplo 1: Usando ; para continuar
+?- progenitor(homer, X).
+% Digite ; após cada solução para continuar
+
+% Exemplo 2: Usando findall para todas as soluções
+?- findall(X, progenitor(homer, X), Filhos).
+
+% Exemplo 3: Usando forall para imprimir todos
+?- forall(progenitor(homer, X), (write('Homer é pai de: '), writeln(X))).
