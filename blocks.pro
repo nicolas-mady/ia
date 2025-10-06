@@ -292,20 +292,33 @@ action(State, move(B, From, To), NewState) :-
 % Situações do trabalho
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Situação 1 — S0 -> Sf4
+% Situação 1
+% c0, a3, b5, d on a, d on b, clear c, clear d
 s1_start([pos(a,(table 0)), pos(b,(table 1)), pos(c,on(d)), pos(d,(table 2)),
           clear(a), clear(b), clear(c)]).
+% c0, a on c, d2, b5, clear a, clear b, clear d
 s1_goal([pos(a,on(c)), pos(c,(table 0)), pos(b,on(d)), pos(d,(table 1)),
          clear(a), clear(b)]).
 
-% Situação 2 — S0 -> S5
+% Situação 2
+% c0, d3, a on c, b on c, clear a, clear b, clear d
 s2_start([pos(a,(table 0)), pos(b,on(c)), pos(c,(table 1)), pos(d,(table 2)),
           clear(a), clear(b), clear(d)]).
+% d3, c on d, a on c, b on c, clear a, clear b
 s2_goal([pos(a,on(c)), pos(c,(table 0)), pos(b,on(d)), pos(d,(table 1)),
          clear(a), clear(b)]).
 
-% Situação 3 — S0 -> S7
+% Situação 3
+% c0, a3, b5, d on a, d on b, clear c, clear d
 s3_start([pos(a,(table 0)), pos(b,(table 1)), pos(c,on(d)), pos(d,(table 2)),
           clear(a), clear(b), clear(c)]).
+% c0, a on c, b on c, d3, clear a, clear b, clear d
 s3_goal([pos(a,on(c)), pos(c,(table 0)), pos(b,on(d)), pos(d,(table 1)),
          clear(a), clear(b)]).
+
+
+/* 
+?- s1_start(S), s1_goal(G), a_star_plan(S, G, Plan).
+?- s2_start(S), s2_goal(G), a_star_plan(S, G, Plan).
+?- s3_start(S), s3_goal(G), a_star_plan(S, G, Plan).
+ */
