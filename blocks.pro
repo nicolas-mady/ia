@@ -308,17 +308,30 @@ s2_start([pos(a,(table 0)), pos(b,on(c)), pos(c,(table 1)), pos(d,(table 2)),
 s2_goal([pos(a,on(c)), pos(c,(table 0)), pos(b,on(d)), pos(d,(table 1)),
          clear(a), clear(b)]).
 
-% Situação 3
-% c0, a3, b5, d on a, d on b, clear c, clear d
-s3_start([pos(a,(table 0)), pos(b,(table 1)), pos(c,on(d)), pos(d,(table 2)),
-          clear(a), clear(b), clear(c)]).
-% c0, a on c, b on c, d3, clear a, clear b, clear d
-s3_goal([pos(a,on(c)), pos(c,(table 0)), pos(b,on(d)), pos(d,(table 1)),
-         clear(a), clear(b)]).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Situação 3 — S0 → S7
+% S0: a | b | (c sobre d)
+% S7: (a sobre c) | (b sobre d)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+s3_start([
+    pos(a,(table 0)),
+    pos(b,(table 1)),
+    pos(c,on(d)),
+    pos(d,(table 2)),
+    clear(a), clear(b)     % só os topos livres
+]).
+
+s3_goal([
+    pos(a,on(c)),
+    pos(c,(table 0)),
+    pos(b,on(d)),
+    pos(d,(table 1)),
+    clear(a), clear(b)     % só os topos livres
+]).
 
 /* 
 ?- s1_start(S), s1_goal(G), a_star_plan(S, G, Plan).
 ?- s2_start(S), s2_goal(G), a_star_plan(S, G, Plan).
 ?- s3_start(S), s3_goal(G), a_star_plan(S, G, Plan).
- */
+*/
